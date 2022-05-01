@@ -1,0 +1,11 @@
+- name: this will chck in which linux user1 is present 
+  hosts: linux
+ 
+  tasks:
+    - blockinfile:
+        path: /etc/resolv.conf
+        insertafter: EOF
+        backup: yes
+        state: present
+        block: | 
+          domain canadaeast.cloudapp.azure.com

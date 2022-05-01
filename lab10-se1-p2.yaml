@@ -1,0 +1,12 @@
+- name: this will chck in which linux user1 is present 
+  hosts: linux
+ 
+  tasks:
+    - name: capture user information 
+      command: cat /etc/passwd 
+      register: users
+
+    - name: show which linux servers have the user 
+      debug:
+        msg: "This server has the user1 user" 
+        when: users.stdout.find('user1') != -1 
